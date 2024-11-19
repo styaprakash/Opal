@@ -1,7 +1,8 @@
 import { onAuthenticationUser } from '@/actions/user'
 import { redirect } from 'next/navigation'
 
-const DashboardPage = async() => {
+
+const AuthCallbackPage = async() => {
     const auth = await onAuthenticationUser()
     if(auth.status === 200 || auth.status === 201){
         return redirect (`/dashboard/${auth.user?.firstName}
@@ -11,4 +12,4 @@ const DashboardPage = async() => {
         return redirect('/auth/sign-in')
 }
 
-export default DashboardPage;
+export default AuthCallbackPage;
